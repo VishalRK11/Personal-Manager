@@ -1,0 +1,14 @@
+{% extends 'CreditCards/_base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h3 id="caption"><b>Card details</b></h3>
+            <p>Card Name: {{ card.card_name }}</p>
+            <p>Name On Card: {{ card.name_on_card }}</p>
+            <p>Card Type: {{ card.card_type }}</p>
+            <p>Card Number: {{ card.card_number }}</p>
+            <p><a href="{% url 'CreditCards:edit_card' pk=card.id %}">Edit</a> |
+                <a href="{% url 'CreditCards:delete_card' pk=card.id %}">Delete</a></p>
+
+    </div>
+{% endblock %}

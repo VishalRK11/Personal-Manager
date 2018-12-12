@@ -1,0 +1,22 @@
+{% extends 'CreditCards/_base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h3 id="caption"><b>All Saved Cards</b></h3>
+        <table cellpadding="5px" class="table table-bordered">
+            <a href="{% url 'CreditCards:add_card' %}" class="btn btn-default">+ Add Card</a>
+            <tr>
+                <th>Card ID</th>
+                <th>Card Name</th>
+            </tr>
+            {% for card in cards_data %}
+            <tr>
+                {% if card.owner_id == request.user.id %}
+                <td id="card-id">{{ card.id }}</td>
+                <td id="name"><a href="{% url 'CreditCards:card_details' pk=card.id %}"> {{ card.card_name }} </a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
